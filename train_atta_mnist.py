@@ -145,7 +145,9 @@ def train(args, model, device, mnist_nat_x, mnist_x, mnist_y, optimizer, epoch):
 
         loss.backward()
         optimizer.step()
-        mnist_x[cur_order[batch_idx:min(num_of_example, batch_idx + batch_size)]] = x_adv_next
+        #Comment this sentence to make this training into original pgd-attack-method
+        #mnist_store all the updated adv images. Here we stop the update process!
+        #mnist_x[cur_order[batch_idx:min(num_of_example, batch_idx + batch_size)]] = x_adv_next
 
         # print progress
         if i % args.log_interval == 0:
